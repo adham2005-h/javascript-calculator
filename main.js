@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentInput = "";
     let firstOperand = "";
     let operator = null;
+    let resultShown = false;
 
     buttons.forEach(button => {
         button.addEventListener("click", () => {
@@ -33,6 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function addNumber(value) {
+        // A digit after "=" starts a new calculation.
+        if (resultShown) {
+            currentInput = "";
+            resultShown = false;
+        }
+        if (value === "." && currentInput === "") currentInput = "0";
         if (value === "." && currentInput.includes(".")) {
             return;
         }
@@ -43,9 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function chooseOperator(selectedOperator) {
         if (currentInput === "") {
+            if (firstOperand !== "") operator = selectedOperator;
             return;
         }
 
+        // Finish the previous operation before starting the next one.
+        if (firstOperand !== "" && operator !== null) {
+            calculateResult();
+            if (currentInput === "") return;
+        }
+        resultShown = false;
         firstOperand = currentInput;
         operator = selectedOperator;
         currentInput = "";
@@ -88,6 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
         }
 
+        if (!Number.isFinite(result)) {
+            clearCalculator();
+            display.value = "Error";
+            return;
+        }
+        resultShown = true;
         display.value = result;
         currentInput = result.toString();
         firstOperand = "";
@@ -95,11 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function deleteLastCharacter() {
+        resultShown = false;
         currentInput = currentInput.slice(0, -1);
         display.value = currentInput;
     }
 
     function clearCalculator() {
+        resultShown = false;
         currentInput = "";
         firstOperand = "";
         operator = null;
