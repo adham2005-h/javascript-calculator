@@ -1,20 +1,24 @@
 # JavaScript Calculator
 
-A browser calculator for addition, subtraction, multiplication and division, with decimal input, clear and delete controls.
+A simple browser calculator built with HTML, CSS and JavaScript.
 
-## Technologies
+[Try the live demo](https://adham2005-h.github.io/javascript-calculator/)
 
-HTML, CSS, JavaScript.
+## Features
+
+Addition, subtraction, multiplication and division, with decimal input, clear and delete controls. Division by zero displays an error.
 
 ## Run locally
 
-1. Download or clone the repository.
-2. Open `index.html` in a browser.
-3. Keep the existing image and stylesheet folders in place.
+Open `index.html` with `main.js` and `styles.css` alongside it.
 
-## Project scope
+## What I practiced
 
-A basic calculator exercise, rather than a scientific calculator.
+DOM events, input state, functions and conditional logic.
+
+## Scope
+
+The calculator handles two operands at a time; it is not a scientific calculator or a full expression parser.
 
 ## Author
 
