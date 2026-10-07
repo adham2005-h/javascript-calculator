@@ -4,6 +4,8 @@ A simple browser calculator built with HTML, CSS and JavaScript.
 
 [Try the live demo](https://adham2005-h.github.io/javascript-calculator/)
 
+![Project preview](docs/preview.png)
+
 ## Features
 
 Addition, subtraction, multiplication and division, with decimal input, clear and delete controls. Division by zero displays an error.
